@@ -1,0 +1,20 @@
+module mux_8x1(
+   input i0,i1,i2,i3,i4,i5,i6,i7,s0,s1,
+    output y0,y1
+    );
+  
+   assign y0=i0&s0&s1|i1&(~s0)&(s1)|i2&(s0)&(~s1)|i3&(~s0)&(~s1);
+   
+assign y1=i4&s0&s1|i5&(~s0)&(s1)|i6&(s0)&(~s1)|i7&(~s0)&(~s1);
+endmodule
+
+
+module mux8x1_4x1(
+    input y0,y1,s2,en0,
+    output  y2
+    );
+    
+    
+   assign y2=en0&((y0 & s2)|(y1 & ( ~s2 )));
+
+endmodule
